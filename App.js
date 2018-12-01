@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {
   Platform, StatusBar, StyleSheet, View,
 } from 'react-native';
 import {
   AppLoading, Asset, Font, Icon,
 } from 'expo';
+import { observer } from 'mobx-react';
+import { observable } from 'mobx';
+
 import AppNavigator from './navigation/AppNavigator';
 
 const styles = StyleSheet.create({
@@ -16,10 +18,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-  };
+@observer
+class App extends React.Component {
+  @observable
+  isLoadingComplete = false;
 
   loadResourcesAsync = async () => Promise.all([
     Asset.loadAsync([
@@ -42,11 +44,11 @@ export default class App extends React.Component {
   };
 
   handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
+    this.isLoadingComplete = true;
   };
 
   render() {
-    const { isLoadingComplete } = this.state;
+    const { isLoadingComplete } = this;
     const { skipLoadingScreen } = this.props;
 
     if (!isLoadingComplete && !skipLoadingScreen) {
@@ -74,3 +76,5 @@ App.propTypes = {
 App.defaultProps = {
   skipLoadingScreen: false,
 };
+
+export default App;

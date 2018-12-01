@@ -1,6 +1,7 @@
 {
   "presets": ["babel-preset-expo"],
   "env": {
+    "plugins": ["transform-decorators-legacy"],
     "development": {
       "plugins": ["transform-react-jsx-source"]
     }
