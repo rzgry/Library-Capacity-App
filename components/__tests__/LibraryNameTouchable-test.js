@@ -5,24 +5,18 @@ import { shallow } from 'enzyme';
 
 import LibraryNameTouchable from '../LibraryNameTouchable';
 
-it('renders correctly', () => {
-  const tree = renderer.create(<LibraryNameTouchable libraryName="Test library" />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
+describe('<LibraryNameTouchable />', () => {
+  it('renders correctly', () => {
+    const tree = renderer.create(<LibraryNameTouchable libraryName="Test library" />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
-it('handles being pressed correctly', () => {
-  let pressed = false;
+  it('handles being pressed correctly', () => {
+    const onPress = jest.fn();
 
-  const wrapper = shallow(
-    <LibraryNameTouchable
-      libraryName="Test library"
-      onPress={() => {
-        pressed = true;
-      }}
-    />,
-  );
+    const wrapper = shallow(<LibraryNameTouchable libraryName="Test library" onPress={onPress} />);
+    wrapper.props().onPress();
 
-  wrapper.props().onPress();
-
-  expect(pressed).toBe(true);
+    expect(onPress).toHaveBeenCalledTimes(1);
+  });
 });
