@@ -6,9 +6,10 @@ import {
 import {
   AppLoading, Asset, Font, Icon,
 } from 'expo';
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 import { observable } from 'mobx';
 
+import LibraryStore from './stores/LibraryStore';
 import AppNavigator from './navigation/AppNavigator';
 
 const styles = StyleSheet.create({
@@ -29,11 +30,9 @@ class App extends React.Component {
       require('./assets/images/robot-prod.png'), // eslint-disable-line global-require
     ]),
     Font.loadAsync({
-      // This is the font that we are using for our tab bar
       ...Icon.Ionicons.font,
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free
-      // to remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'), // eslint-disable-line global-require
+      Roboto: require('native-base/Fonts/Roboto.ttf'), // eslint-disable-line global-require
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'), // eslint-disable-line global-require
     }),
   ]);
 
@@ -61,10 +60,12 @@ class App extends React.Component {
       );
     }
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
+      <Provider libraryStore={new LibraryStore()}>
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppNavigator />
+        </View>
+      </Provider>
     );
   }
 }
