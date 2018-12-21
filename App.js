@@ -7,15 +7,18 @@ import {
   AppLoading, Asset, Font, Icon,
 } from 'expo';
 import { observer, Provider } from 'mobx-react';
-import { observable } from 'mobx';
+import { observable, configure, action } from 'mobx';
 
-import LibraryStore from './stores/LibraryStore';
+import stores from './stores/index';
 import AppNavigator from './navigation/AppNavigator';
+
+configure({
+  enforceActions: 'observed',
+});
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 });
 
@@ -42,6 +45,7 @@ class App extends React.Component {
     console.warn(error); // eslint-disable-line no-console
   };
 
+  @action
   handleFinishLoading = () => {
     this.isLoadingComplete = true;
   };
@@ -60,7 +64,7 @@ class App extends React.Component {
       );
     }
     return (
-      <Provider libraryStore={new LibraryStore()}>
+      <Provider {...stores}>
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <AppNavigator />

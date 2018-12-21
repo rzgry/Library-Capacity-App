@@ -17,7 +17,6 @@
     ]
   },
   "dependencies": {
-    "@expo/samples": "2.1.1",
     "@expo/vector-icons": "^8.0.0",
     "axios": "^0.18.0",
     "expo": "^30.0.1",

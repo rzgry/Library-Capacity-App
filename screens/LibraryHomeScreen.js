@@ -5,6 +5,7 @@ import {
 } from 'native-base';
 import { RefreshControl } from 'react-native';
 import { observer, inject } from 'mobx-react';
+import CapacityBadge from '../components/CapacityBadge';
 
 @inject('libraryStore')
 @observer
@@ -14,8 +15,7 @@ class LibraryHomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    const { libraryStore } = this.props;
-    libraryStore.fetchLibraries();
+    this.handleRefresh();
   }
 
   handlePressLibrary = (libraryName) => {
@@ -23,6 +23,11 @@ class LibraryHomeScreen extends React.Component {
     navigation.navigate('LibraryDetails', {
       name: libraryName,
     });
+  };
+
+  handleRefresh = () => {
+    const { libraryStore } = this.props;
+    libraryStore.fetchLibraries();
   };
 
   render() {
@@ -34,17 +39,17 @@ class LibraryHomeScreen extends React.Component {
           refreshControl={(
             <RefreshControl
               refreshing={libraryStore.loadingLibraries}
-              onRefresh={() => libraryStore.fetchLibraries()}
+              onRefresh={this.handleRefresh}
             />
 )}
         >
-          {libraryStore.libraries.map(lib => (
+          {libraryStore.sortedLibraries.map(lib => (
             <ListItem icon button onPress={() => this.handlePressLibrary(lib.name)} key={lib.name}>
               <Body>
                 <Text>{lib.name}</Text>
               </Body>
               <Right>
-                <Text>{`${lib.overallCapacity * 100}%`}</Text>
+                <CapacityBadge capacity={lib.overallCapacity} />
                 <Icon active name="arrow-forward" />
               </Right>
             </ListItem>

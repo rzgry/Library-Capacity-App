@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 class Library {
   @observable
@@ -20,17 +20,34 @@ export default class LibraryStore {
   @observable
   libraries = [];
 
+  constructor(settingStore) {
+    this.settingStore = settingStore;
+  }
+
   getLibrary(libraryName) {
     return this.libraries.find(lib => lib.name === libraryName);
   }
 
+  @computed
+  get sortedLibraries() {
+    return this.libraries.slice().sort(this.settingStore.librarySortFunction);
+  }
+
+  @action
   fetchLibraries() {
     // TODO: Fetch library from API
-    // Temp simulate network request
     this.loadingLibraries = true;
-    setTimeout(() => {
-      this.libraries = [new Library('Taylor Library', 0.85), new Library('Weldon Library', 0.6)];
-      this.loadingLibraries = false;
-    }, 1000);
+
+    //  Simulate network request
+    setTimeout(
+      action(() => {
+        this.libraries = [
+          new Library('Taylor Library', Math.round(Math.random() * 100)),
+          new Library('Weldon Library', Math.round(Math.random() * 100)),
+        ];
+        this.loadingLibraries = false;
+      }),
+      1000,
+    );
   }
 }

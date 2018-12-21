@@ -1,7 +1,17 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
-// eslint-disable-next-line import/prefer-default-export
+const styles = StyleSheet.create({
+  heading: { fontWeight: '800', fontSize: 24 },
+  subheading: { fontWeight: '800', fontSize: 20 },
+});
+
 export const MonoText = ({ style, ...rest }) => (
   <Text {...rest} style={[style, { fontFamily: 'space-mono' }]} />
+);
+
+export const Heading = ({ style, ...rest }) => <Text {...rest} style={[style, styles.heading]} />;
+
+export const SubHeading = ({ style, ...rest }) => (
+  <Text {...rest} style={[style, styles.subheading]} />
 );

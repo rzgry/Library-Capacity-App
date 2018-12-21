@@ -1,6 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StyledText /> renders correctly 1`] = `
+exports[`<Heading /> renders correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      undefined,
+      Object {
+        "fontSize": 24,
+        "fontWeight": "800",
+      },
+    ]
+  }
+>
+  Snapshot test!
+</Text>
+`;
+
+exports[`<MonoText /> renders correctly 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -10,6 +29,25 @@ exports[`<StyledText /> renders correctly 1`] = `
       undefined,
       Object {
         "fontFamily": "space-mono",
+      },
+    ]
+  }
+>
+  Snapshot test!
+</Text>
+`;
+
+exports[`<Subheading /> renders correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      undefined,
+      Object {
+        "fontSize": 20,
+        "fontWeight": "800",
       },
     ]
   }
