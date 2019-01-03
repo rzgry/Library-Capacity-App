@@ -1,18 +1,16 @@
 import React from 'react';
-import { Container, Content, View } from 'native-base';
+import {
+  Container, Content, View, Text,
+} from 'native-base';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 import { RefreshControl } from 'react-native';
 import CapacityBadge from '../components/CapacityBadge';
-import { SubHeading } from '../components/StyledText';
+import { Heading, SubHeading } from '../components/StyledText';
 
 @inject('libraryStore')
 @observer
 class LibraryDetailsScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam('name', 'unknown'),
-  });
-
   render() {
     const { libraryStore, navigation } = this.props;
 
@@ -32,6 +30,9 @@ class LibraryDetailsScreen extends React.Component {
             />
 )}
         >
+          <View style={{ marginBottom: 8 }}>
+            <Heading>{`${libName}`}</Heading>
+          </View>
           {/* Overall Capacity */}
           <View
             style={{
@@ -39,15 +40,16 @@ class LibraryDetailsScreen extends React.Component {
               flexDirection: 'row',
               alignItems: 'center',
               marginBottom: 8,
+              marginLeft: 8,
             }}
           >
-            <SubHeading>Overall Capacity: </SubHeading>
+            <Text>Total: </Text>
             <CapacityBadge capacity={lib.overallCapacity} />
           </View>
 
           {/* Capacity by floor */}
           <View>
-            <SubHeading>Capacity by floor: </SubHeading>
+            <SubHeading>Floors: </SubHeading>
           </View>
         </Content>
       </Container>
