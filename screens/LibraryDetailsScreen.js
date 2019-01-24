@@ -5,8 +5,9 @@ import {
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 import { RefreshControl } from 'react-native';
-import CapacityBadge from '../components/CapacityBadge';
 import { Heading, SubHeading } from '../components/StyledText';
+
+import { ProgressBar, ProgressCircle } from '../components/CapacityProgress';
 
 @inject('libraryStore')
 @observer
@@ -30,26 +31,52 @@ class LibraryDetailsScreen extends React.Component {
             />
 )}
         >
-          <View style={{ marginBottom: 8 }}>
-            <Heading>{`${libName}`}</Heading>
-          </View>
-          {/* Overall Capacity */}
           <View
             style={{
               flex: 1,
-              flexDirection: 'row',
+              flexDirection: 'column',
               alignItems: 'center',
               marginBottom: 8,
               marginLeft: 8,
             }}
           >
-            <Text>Total: </Text>
-            <CapacityBadge capacity={lib.overallCapacity} />
+            <View style={{ marginBottom: 8 }}>
+              <Heading>{`${libName}`}</Heading>
+            </View>
+            <View>
+              <ProgressCircle
+                animated={false} // temp until https://github.com/oblador/react-native-progress/issues/67 is fixed
+                showsText
+                size={100}
+                progress={lib.overallCapacity}
+              />
+            </View>
           </View>
 
           {/* Capacity by floor */}
           <View>
             <SubHeading>Floors: </SubHeading>
+            {Object.entries(lib.floorCapacities).map(([floorName, floorCapacity]) => (
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginBottom: 8,
+                  marginLeft: 8,
+                }}
+                key={floorName}
+              >
+                <Text
+                  style={{
+                    marginRight: 8,
+                  }}
+                >
+                  {floorName}
+                </Text>
+                <ProgressBar progress={floorCapacity} width={200} />
+              </View>
+            ))}
           </View>
         </Content>
       </Container>

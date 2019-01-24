@@ -7,11 +7,19 @@ class Library {
   @observable
   overallCapacity;
 
-  constructor(name, overallCapacity) {
+  @observable
+  floorCapacities;
+
+  constructor(name, capacities) {
+    const { overallCapacity, floorCapacities } = capacities;
+
     this.name = name;
     this.overallCapacity = overallCapacity;
+    this.floorCapacities = floorCapacities;
   }
 }
+
+const randValue = () => Math.round(Math.random() * 100) / 100;
 
 export default class LibraryStore {
   @observable
@@ -44,8 +52,22 @@ export default class LibraryStore {
     setTimeout(
       action(() => {
         this.libraries = [
-          new Library('Taylor Library', Math.round(Math.random() * 100)),
-          new Library('Weldon Library', Math.round(Math.random() * 100)),
+          new Library('Taylor Library', {
+            overallCapacity: randValue(),
+            floorCapacities: {
+              s1: randValue(),
+              s2: randValue(),
+              s3: randValue(),
+            },
+          }),
+          new Library('Weldon Library', {
+            overallCapacity: randValue(),
+            floorCapacities: {
+              s1: randValue(),
+              s2: randValue(),
+              s3: randValue(),
+            },
+          }),
         ];
         this.loadingLibraries = false;
       }),
