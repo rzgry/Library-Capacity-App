@@ -1,0 +1,526 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar /> renders correctly with 0 progress 1`] = `
+<View
+  animated={true}
+  animationConfig={
+    Object {
+      "bounciness": 0,
+    }
+  }
+  animationType="spring"
+  indeterminate={false}
+  onLayout={[Function]}
+  progress={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": undefined,
+        "borderColor": "grey",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "overflow": "hidden",
+        "width": 150,
+      },
+      undefined,
+    ]
+  }
+  useNativeDriver={false}
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "#5cb85c",
+        "height": 6,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateX": -74,
+          },
+          Object {
+            "scaleX": 0.0001,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;
+
+exports[`<ProgressBar /> renders correctly with 0 progress 2`] = `
+<View
+  animated={true}
+  animationConfig={
+    Object {
+      "bounciness": 0,
+    }
+  }
+  animationType="spring"
+  indeterminate={false}
+  onLayout={[Function]}
+  progress={50}
+  style={
+    Array [
+      Object {
+        "backgroundColor": undefined,
+        "borderColor": "grey",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "overflow": "hidden",
+        "width": 150,
+      },
+      undefined,
+    ]
+  }
+  useNativeDriver={false}
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "#d9534f",
+        "height": 6,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "scaleX": 1,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;
+
+exports[`<ProgressBar /> renders correctly with 100 progress 1`] = `
+<View
+  animated={true}
+  animationConfig={
+    Object {
+      "bounciness": 0,
+    }
+  }
+  animationType="spring"
+  indeterminate={false}
+  onLayout={[Function]}
+  progress={100}
+  style={
+    Array [
+      Object {
+        "backgroundColor": undefined,
+        "borderColor": "grey",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "overflow": "hidden",
+        "width": 150,
+      },
+      undefined,
+    ]
+  }
+  useNativeDriver={false}
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "#d9534f",
+        "height": 6,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "scaleX": 1,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;
+
+exports[`<ProgressCircle /> renders correctly with 0 progress 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <ARTSurfaceView
+    style={
+      Array [
+        Object {
+          "transform": Array [
+            Object {
+              "rotate": "0deg",
+            },
+          ],
+        },
+        Object {
+          "height": 40,
+          "width": 40,
+        },
+      ]
+    }
+  >
+    <ARTShape
+      d={
+        Array [
+          0,
+          20,
+          2.5,
+          2,
+          20,
+          2.5,
+        ]
+      }
+      fill={null}
+      opacity={1}
+      stroke={
+        Array [
+          0.3607843137254902,
+          0.7215686274509804,
+          0.3607843137254902,
+          1,
+        ]
+      }
+      strokeCap={0}
+      strokeDash={null}
+      strokeJoin={1}
+      strokeWidth={3}
+      transform={
+        Array [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+        ]
+      }
+    />
+    <ARTShape
+      d={
+        Array [
+          0,
+          20,
+          0.5,
+          4,
+          20,
+          20,
+          19.5,
+          -1.5707963267948966,
+          1.5707963267948966,
+          1,
+          4,
+          20,
+          20,
+          19.5,
+          1.5707963267948966,
+          -1.5707963267948966,
+          1,
+          1,
+        ]
+      }
+      fill={null}
+      opacity={1}
+      stroke={
+        Array [
+          0.3607843137254902,
+          0.7215686274509804,
+          0.3607843137254902,
+          1,
+        ]
+      }
+      strokeCap={0}
+      strokeDash={null}
+      strokeJoin={1}
+      strokeWidth={1}
+      transform={
+        Array [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+        ]
+      }
+    />
+  </ARTSurfaceView>
+</View>
+`;
+
+exports[`<ProgressCircle /> renders correctly with 0 progress 2`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <ARTSurfaceView
+    style={
+      Array [
+        Object {
+          "transform": Array [
+            Object {
+              "rotate": "0deg",
+            },
+          ],
+        },
+        Object {
+          "height": 40,
+          "width": 40,
+        },
+      ]
+    }
+  >
+    <ARTShape
+      d={
+        Array [
+          0,
+          20,
+          2.5,
+          4,
+          20,
+          20,
+          17.5,
+          -1.5707963267948966,
+          1.5707963267948966,
+          1,
+          4,
+          20,
+          20,
+          17.5,
+          1.5707963267948966,
+          -1.5707963267948966,
+          1,
+          1,
+        ]
+      }
+      fill={null}
+      opacity={1}
+      stroke={
+        Array [
+          0.8509803921568627,
+          0.3254901960784314,
+          0.30980392156862746,
+          1,
+        ]
+      }
+      strokeCap={0}
+      strokeDash={null}
+      strokeJoin={1}
+      strokeWidth={3}
+      transform={
+        Array [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+        ]
+      }
+    />
+    <ARTShape
+      d={
+        Array [
+          0,
+          20,
+          0.5,
+          4,
+          20,
+          20,
+          19.5,
+          -1.5707963267948966,
+          1.5707963267948966,
+          1,
+          4,
+          20,
+          20,
+          19.5,
+          1.5707963267948966,
+          -1.5707963267948966,
+          1,
+          1,
+        ]
+      }
+      fill={null}
+      opacity={1}
+      stroke={
+        Array [
+          0.8509803921568627,
+          0.3254901960784314,
+          0.30980392156862746,
+          1,
+        ]
+      }
+      strokeCap={0}
+      strokeDash={null}
+      strokeJoin={1}
+      strokeWidth={1}
+      transform={
+        Array [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+        ]
+      }
+    />
+  </ARTSurfaceView>
+</View>
+`;
+
+exports[`<ProgressCircle /> renders correctly with 100 progress 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <ARTSurfaceView
+    style={
+      Array [
+        Object {
+          "transform": Array [
+            Object {
+              "rotate": "0deg",
+            },
+          ],
+        },
+        Object {
+          "height": 40,
+          "width": 40,
+        },
+      ]
+    }
+  >
+    <ARTShape
+      d={
+        Array [
+          0,
+          20,
+          2.5,
+          4,
+          20,
+          20,
+          17.5,
+          -1.5707963267948966,
+          1.5707963267948966,
+          1,
+          4,
+          20,
+          20,
+          17.5,
+          1.5707963267948966,
+          -1.5707963267948966,
+          1,
+          1,
+        ]
+      }
+      fill={null}
+      opacity={1}
+      stroke={
+        Array [
+          0.8509803921568627,
+          0.3254901960784314,
+          0.30980392156862746,
+          1,
+        ]
+      }
+      strokeCap={0}
+      strokeDash={null}
+      strokeJoin={1}
+      strokeWidth={3}
+      transform={
+        Array [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+        ]
+      }
+    />
+    <ARTShape
+      d={
+        Array [
+          0,
+          20,
+          0.5,
+          4,
+          20,
+          20,
+          19.5,
+          -1.5707963267948966,
+          1.5707963267948966,
+          1,
+          4,
+          20,
+          20,
+          19.5,
+          1.5707963267948966,
+          -1.5707963267948966,
+          1,
+          1,
+        ]
+      }
+      fill={null}
+      opacity={1}
+      stroke={
+        Array [
+          0.8509803921568627,
+          0.3254901960784314,
+          0.30980392156862746,
+          1,
+        ]
+      }
+      strokeCap={0}
+      strokeDash={null}
+      strokeJoin={1}
+      strokeWidth={1}
+      transform={
+        Array [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+        ]
+      }
+    />
+  </ARTSurfaceView>
+</View>
+`;
