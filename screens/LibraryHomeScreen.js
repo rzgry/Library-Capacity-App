@@ -43,6 +43,7 @@ class LibraryHomeScreen extends React.Component {
             />
 )}
         >
+          {libraryStore.error !== '' && <Text>{libraryStore.error}</Text>}
           {libraryStore.sortedLibraries.map(lib => (
             <ListItem icon button onPress={() => this.handlePressLibrary(lib.name)} key={lib.name}>
               <Body>

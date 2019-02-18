@@ -15,19 +15,21 @@ Add the following to your vscode settings
 
 ## Getting Started
 
-Install dependencies
+1. Install dependencies
 
 ```
 npm install
 ```
 
-Running application
+2. Copy and rename config/config.template.json to config/config.json and fill out missing configuration variables.
+
+3. Running application
 
 ```
 npm start
 ```
 
-Running tests / linting
+4. Running tests / linting
 
 ```
 npm test
