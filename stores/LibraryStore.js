@@ -1,4 +1,7 @@
-import { observable, action, computed } from 'mobx';
+import {
+  observable, action, computed, runInAction,
+} from 'mobx';
+import API from '../constants/API';
 
 class Library {
   @observable
@@ -19,14 +22,15 @@ class Library {
   }
 }
 
-const randValue = () => Math.round(Math.random() * 100) / 100;
-
 export default class LibraryStore {
   @observable
   loadingLibraries = false;
 
   @observable
   libraries = [];
+
+  @observable
+  error = '';
 
   constructor(settingStore) {
     this.settingStore = settingStore;
@@ -44,34 +48,27 @@ export default class LibraryStore {
   }
 
   @action
-  fetchLibraries() {
-    // TODO: Fetch library from API
+  async fetchLibraries() {
     this.loadingLibraries = true;
 
-    //  Simulate network request
-    setTimeout(
-      action(() => {
-        this.libraries = [
-          new Library('Taylor Library', {
-            overallCapacity: randValue(),
-            floorCapacities: {
-              s1: randValue(),
-              s2: randValue(),
-              s3: randValue(),
-            },
-          }),
-          new Library('Weldon Library', {
-            overallCapacity: randValue(),
-            floorCapacities: {
-              s1: randValue(),
-              s2: randValue(),
-              s3: randValue(),
-            },
-          }),
-        ];
+    try {
+      const response = await API.get('/libraries');
+      runInAction(() => {
+        const libraries = Object.entries(response.data).map(
+          ([name, capacities]) => new Library(name, capacities),
+        );
+        this.error = '';
+        this.libraries = libraries;
+      });
+    } catch (e) {
+      runInAction(() => {
+        this.error = 'Unexpected error occured when loading libraries';
+      });
+      console.log(e); // eslint-disable-line no-console
+    } finally {
+      runInAction(() => {
         this.loadingLibraries = false;
-      }),
-      1000,
-    );
+      });
+    }
   }
 }
