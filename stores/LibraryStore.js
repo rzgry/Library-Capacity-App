@@ -14,11 +14,11 @@ class Library {
   floorCapacities;
 
   constructor(name, capacities) {
-    const { overallCapacity, floorCapacities } = capacities;
+    const { total, floors } = capacities;
 
     this.name = name;
-    this.overallCapacity = overallCapacity;
-    this.floorCapacities = floorCapacities;
+    this.overallCapacity = total;
+    this.floorCapacities = floors;
   }
 }
 
@@ -31,6 +31,9 @@ export default class LibraryStore {
 
   @observable
   error = '';
+
+  @observable
+  lastUpdated = undefined;
 
   constructor(settingStore) {
     this.settingStore = settingStore;
@@ -52,8 +55,13 @@ export default class LibraryStore {
     this.loadingLibraries = true;
 
     try {
-      const response = await API.get('/libraries');
+      const response = await API.get('/libraries/capacities');
       runInAction(() => {
+        const { data } = response;
+
+        this.lastUpdated = new Date(data.timestamp);
+        delete data.timestamp;
+
         const libraries = Object.entries(response.data).map(
           ([name, capacities]) => new Library(name, capacities),
         );
