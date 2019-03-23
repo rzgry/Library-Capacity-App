@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Container, Content, View, Text, ListItem
+  Container, Content, View, Text, ListItem,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
@@ -78,7 +78,11 @@ class LibraryDetailsScreen extends React.Component {
               </ListItem>
             ))}
           </View>
-          <Text>{`Last updated: ${libraryStore.lastUpdated.toLocaleString()}`}</Text>
+          <Text
+            style={{ color: 'gray' }}
+          >
+            {`Last updated: ${libraryStore.lastUpdated.toLocaleString()}`}
+          </Text>
         </Content>
       </Container>
     );

@@ -5,13 +5,24 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import LibraryHomeScreen from '../screens/LibraryHomeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import LibraryDetailsScreen from '../screens/LibraryDetailsScreen';
 
-export const HomeStack = createStackNavigator({
-  Home: LibraryHomeScreen,
-  LibraryDetails: LibraryDetailsScreen,
-});
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: '#441087',
+  },
+  headerTintColor: '#fff',
+};
+
+export const HomeStack = createStackNavigator(
+  {
+    Home: LibraryHomeScreen,
+    LibraryDetails: LibraryDetailsScreen,
+  },
+  {
+    navigationOptions: defaultNavigationOptions,
+  },
+);
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Libraries',
@@ -29,9 +40,14 @@ HomeStack.navigationOptions = {
   ),
 };
 
-export const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
+export const LinksStack = createStackNavigator(
+  {
+    Links: LinksScreen,
+  },
+  {
+    navigationOptions: defaultNavigationOptions,
+  },
+);
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
@@ -45,24 +61,7 @@ LinksStack.navigationOptions = {
   ),
 };
 
-export const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: (
-    { focused }, // eslint-disable-line react/prop-types
-  ) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    />
-  ),
-};
-
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack,
 });
