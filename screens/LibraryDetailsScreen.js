@@ -56,7 +56,7 @@ class LibraryDetailsScreen extends React.Component {
           {/* Capacity by floor */}
           <View>
             <SubHeading>Floors: </SubHeading>
-            {Object.entries(lib.floorCapacities).map(([floorName, floorCapacity]) => (
+            {lib.floorCapacities.map(({ name, capacity }) => (
               <View
                 style={{
                   flex: 1,
@@ -65,19 +65,20 @@ class LibraryDetailsScreen extends React.Component {
                   marginBottom: 8,
                   marginLeft: 8,
                 }}
-                key={floorName}
+                key={name}
               >
                 <Text
                   style={{
                     marginRight: 8,
                   }}
                 >
-                  {floorName}
+                  {name}
                 </Text>
-                <ProgressBar progress={floorCapacity} width={200} />
+                <ProgressBar progress={capacity} width={200} />
               </View>
             ))}
           </View>
+          <Text>{`Last updated: ${libraryStore.lastUpdated.toLocaleString()}`}</Text>
         </Content>
       </Container>
     );
