@@ -2,6 +2,7 @@ import {
   observable, action, computed, runInAction,
 } from 'mobx';
 import API from '../constants/API';
+import { capitalizeFirstLetter } from '../utils/string';
 
 class Library {
   @observable
@@ -63,7 +64,7 @@ export default class LibraryStore {
         delete data.timestamp;
 
         const libraries = Object.entries(response.data).map(
-          ([name, capacities]) => new Library(name, capacities),
+          ([name, capacities]) => new Library(`${capitalizeFirstLetter(name)} Library`, capacities),
         );
         this.error = '';
         this.libraries = libraries;
