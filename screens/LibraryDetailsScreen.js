@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Container, Content, View, Text,
+  Container, Content, View, Text, ListItem
 } from 'native-base';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
@@ -57,7 +57,7 @@ class LibraryDetailsScreen extends React.Component {
           <View>
             <SubHeading>Floors: </SubHeading>
             {lib.floorCapacities.map(({ name, capacity }) => (
-              <View
+              <ListItem
                 style={{
                   flex: 1,
                   flexDirection: 'row',
@@ -75,7 +75,7 @@ class LibraryDetailsScreen extends React.Component {
                   {name}
                 </Text>
                 <ProgressBar progress={capacity} width={200} />
-              </View>
+              </ListItem>
             ))}
           </View>
           <Text>{`Last updated: ${libraryStore.lastUpdated.toLocaleString()}`}</Text>
