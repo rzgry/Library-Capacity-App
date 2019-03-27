@@ -1,6 +1,8 @@
 # CS4470 Library Capacity Capstone Project
 A mobile application for students to check the capacity levels of different libraries at Western University. Built using [react native](https://facebook.github.io/react-native/) & [expo](https://expo.io). 📖📚🎉
 
+[![Build Status](https://travis-ci.com/rzgry/Library-Capacity-App.svg?branch=master)](https://travis-ci.com/rzgry/Library-Capacity-App)
+
 ## Setting up VS Code Development Environment
 
 Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) vscode extensions

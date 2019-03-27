@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  Container, Content, View, Text, ListItem,
+  Container, Content, View, Text, ListItem, Right, Body,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 import { RefreshControl } from 'react-native';
 import { Heading, SubHeading } from '../components/StyledText';
+import CapacityBadge from '../components/CapacityBadge';
 
 import { ProgressBar, ProgressCircle } from '../components/CapacityProgress';
 
@@ -56,31 +57,40 @@ class LibraryDetailsScreen extends React.Component {
           {/* Capacity by floor */}
           <View>
             <SubHeading>Floors: </SubHeading>
-            {lib.floorCapacities.map(({ name, capacity }) => (
-              <ListItem
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginBottom: 8,
-                  marginLeft: 8,
-                }}
-                key={name}
-              >
-                <Text
-                  style={{
-                    marginRight: 8,
-                  }}
-                >
-                  {name}
-                </Text>
-                <ProgressBar progress={capacity} width={200} />
+            {lib.floors.map(({ name, capacity, volume_level: volumeLevel }) => (
+              <ListItem key={name}>
+                <Body>
+                  <View
+                    style={{
+                      flex: 1,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      marginBottom: 8,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        marginRight: 8,
+                      }}
+                    >
+                      {name}
+                    </Text>
+                    <ProgressBar progress={capacity} width={175} />
+                  </View>
+                  <View>
+                    <Text style={{ fontSize: 14, color: 'darkgray' }}>
+                      {`Volume Level: ${volumeLevel}`}
+                    </Text>
+                  </View>
+                </Body>
+
+                <Right>
+                  <CapacityBadge capacity={capacity} />
+                </Right>
               </ListItem>
             ))}
           </View>
-          <Text
-            style={{ color: 'gray' }}
-          >
+          <Text style={{ color: 'gray', marginTop: 10 }}>
             {`Last updated: ${libraryStore.lastUpdated.toLocaleString()}`}
           </Text>
         </Content>

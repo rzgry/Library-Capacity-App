@@ -12,14 +12,14 @@ class Library {
   overallCapacity;
 
   @observable
-  floorCapacities;
+  floors;
 
   constructor(name, capacities) {
     const { total, floors } = capacities;
 
     this.name = name;
     this.overallCapacity = total;
-    this.floorCapacities = floors;
+    this.floors = floors;
   }
 }
 
@@ -71,7 +71,8 @@ export default class LibraryStore {
       });
     } catch (e) {
       runInAction(() => {
-        this.error = 'Unexpected error occured when loading libraries';
+        this.error = 'Unexpected error occured when loading libraries. Please try again later.';
+        this.libraries = [];
       });
       console.log(e); // eslint-disable-line no-console
     } finally {
