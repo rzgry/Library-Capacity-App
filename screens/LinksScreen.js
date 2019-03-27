@@ -10,47 +10,49 @@ export default class LinksScreen extends React.Component {
     title: 'Library Services',
   };
 
-  handlePressBookStudySpace = () => {
-    WebBrowser.openBrowserAsync('https://calendar.lib.uwo.ca/reserve/taylor');
-  };
-
-  handlePressPrintCopyScan = () => {
-    WebBrowser.openBrowserAsync('https://www.lib.uwo.ca/services/printingandphotocopying.html');
-  };
-
-  handleProvideFeedback = () => {
-    // TODO: add option to provide feedback
-  };
-
   render() {
+    const links = [
+      {
+        text: 'Book study space',
+        icon: 'md-calendar',
+        href: 'https://calendar.lib.uwo.ca/reserve/taylor',
+      },
+      {
+        text: 'Print, Copy, Scan',
+        icon: 'md-print',
+        href: 'https://www.lib.uwo.ca/services/printingandphotocopying.html',
+      },
+      {
+        text: 'Library catalog',
+        icon: 'md-book',
+        href: 'https://alpha.lib.uwo.ca',
+      },
+      {
+        text: 'Western Libraries Twitter',
+        icon: 'logo-twitter',
+        href: 'https://twitter.com/westernulibs',
+      },
+    ];
+
     return (
       <Container>
         <Content>
           <List>
-            <ListItem icon button onPress={this.handlePressBookStudySpace}>
-              <Left>
-                <Icon active name="md-book" color="#ccc" />
-              </Left>
-              <Body>
-                <Text>Book Study Space</Text>
-              </Body>
-            </ListItem>
-            <ListItem icon button onPress={this.handlePressPrintCopyScan}>
-              <Left>
-                <Icon active name="md-print" color="#ccc" />
-              </Left>
-              <Body>
-                <Text>Print, Copy, Scan</Text>
-              </Body>
-            </ListItem>
-            <ListItem icon button onPress={this.handleProvideFeedback}>
-              <Left>
-                <Icon active name="ios-chatboxes" color="#ccc" />
-              </Left>
-              <Body>
-                <Text>Provide feedback</Text>
-              </Body>
-            </ListItem>
+            {links.map(link => (
+              <ListItem
+                key={link.href}
+                icon
+                button
+                onPress={() => WebBrowser.openBrowserAsync(link.href)}
+              >
+                <Left>
+                  <Icon active name={link.icon} color="#ccc" />
+                </Left>
+                <Body>
+                  <Text>{link.text}</Text>
+                </Body>
+              </ListItem>
+            ))}
           </List>
         </Content>
       </Container>
