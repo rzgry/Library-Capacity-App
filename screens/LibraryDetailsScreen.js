@@ -10,6 +10,20 @@ import CapacityBadge from '../components/CapacityBadge';
 
 import { ProgressBar, ProgressCircle } from '../components/CapacityProgress';
 
+const Prediction = ({ current, future }) => (
+  <View>
+    {current > future ? (
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <Text style={{ fontSize: 14, color: 'darkgray' }}>Expected to get busier</Text>
+      </View>
+    ) : (
+      <View>
+        <Text style={{ fontSize: 14, color: 'darkgray' }}>Expected to get less busy</Text>
+      </View>
+    )}
+  </View>
+);
+
 @inject('libraryStore')
 @observer
 class LibraryDetailsScreen extends React.Component {
@@ -26,6 +40,7 @@ class LibraryDetailsScreen extends React.Component {
     const libName = navigation.getParam('name', 'unknown');
 
     const lib = libraryStore.getLibrary(libName);
+    const libFuture = libraryStore.getLibraryAverage(libName);
 
     return (
       <Container>
@@ -60,7 +75,7 @@ class LibraryDetailsScreen extends React.Component {
           {/* Capacity by floor */}
           <View>
             <SubHeading>Floors: </SubHeading>
-            {lib.floors.map(({ name, capacity, volume_level: volumeLevel }) => (
+            {lib.floors.map(({ name, capacity, volume_level: volumeLevel }, index) => (
               <ListItem key={name}>
                 <Body>
                   <View
@@ -79,6 +94,9 @@ class LibraryDetailsScreen extends React.Component {
                       {name}
                     </Text>
                     <ProgressBar progress={capacity} width={175} />
+                  </View>
+                  <View>
+                    <Prediction current={capacity} future={libFuture.floors[index].capacity} />
                   </View>
                   <View>
                     <Text style={{ fontSize: 14, color: 'darkgray' }}>

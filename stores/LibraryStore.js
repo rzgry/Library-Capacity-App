@@ -56,6 +56,10 @@ export default class LibraryStore {
     return this.libraries.find(lib => lib.name === libraryName);
   }
 
+  getLibraryAverage(libraryName) {
+    return this.averageLibraries.find(lib => lib.name === libraryName);
+  }
+
   // computed getter that returns the libraries sorted by the sort function
   // that the user has selected and stored in settings
   @computed
