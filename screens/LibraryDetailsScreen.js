@@ -13,6 +13,12 @@ import { ProgressBar, ProgressCircle } from '../components/CapacityProgress';
 @inject('libraryStore')
 @observer
 class LibraryDetailsScreen extends React.Component {
+  onRefresh = () => {
+    const { libraryStore } = this.props;
+    libraryStore.fetchLibraries();
+    libraryStore.fetchAverageLibraries();
+  };
+
   render() {
     const { libraryStore, navigation } = this.props;
 
@@ -25,12 +31,9 @@ class LibraryDetailsScreen extends React.Component {
       <Container>
         <Content
           padder
-          refreshControl={(
-            <RefreshControl
-              refreshing={libraryStore.loadingLibraries}
-              onRefresh={() => libraryStore.fetchLibraries()}
-            />
-)}
+          refreshControl={
+            <RefreshControl refreshing={libraryStore.loadingLibraries} onRefresh={this.onRefresh} />
+          }
         >
           <View
             style={{

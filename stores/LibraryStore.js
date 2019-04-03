@@ -36,6 +36,18 @@ export default class LibraryStore {
   @observable
   lastUpdated = undefined;
 
+  @observable
+  loadingAverageLibraries = false;
+
+  @observable
+  averageLibraries = [];
+
+  @observable
+  averageError = '';
+
+  @observable
+  lastUpdatedAverage = undefined;
+
   constructor(settingStore) {
     this.settingStore = settingStore;
   }
@@ -78,6 +90,41 @@ export default class LibraryStore {
     } finally {
       runInAction(() => {
         this.loadingLibraries = false;
+      });
+    }
+  }
+
+  @action
+  async fetchAverageLibraries() {
+    this.loadingAverageLibraries = true;
+
+    try {
+      const date = new Date();
+
+      date.setHours(date.getHours() - 3);
+
+      const response = await API.get(`/libraries/averageCapacities?time=${date.getTime()}`);
+      runInAction(() => {
+        const { data } = response;
+
+        this.lastUpdatedAverage = new Date(data.timestamp);
+        delete data.timestamp;
+
+        const averageLibraries = Object.entries(response.data).map(
+          ([name, capacities]) => new Library(`${capitalizeFirstLetter(name)} Library`, capacities),
+        );
+        this.error = '';
+        this.averageLibraries = averageLibraries;
+      });
+    } catch (e) {
+      runInAction(() => {
+        this.error = 'Unexpected error occured when loading libraries. Please try again later.';
+        this.averageLibraries = [];
+      });
+      console.log(e); // eslint-disable-line no-console
+    } finally {
+      runInAction(() => {
+        this.loadingAverageLibraries = false;
       });
     }
   }

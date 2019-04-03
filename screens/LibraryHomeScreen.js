@@ -28,6 +28,8 @@ class LibraryHomeScreen extends React.Component {
   handleRefresh = () => {
     const { libraryStore } = this.props;
     libraryStore.fetchLibraries();
+
+    libraryStore.fetchAverageLibraries();
   };
 
   render() {
