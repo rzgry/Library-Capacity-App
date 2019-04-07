@@ -12,7 +12,7 @@ import { ProgressBar, ProgressCircle } from '../components/CapacityProgress';
 
 const Prediction = ({ current, future }) => (
   <View>
-    {current > future ? (
+    {current < future ? (
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <Text style={{ fontSize: 14, color: 'darkgray' }}>Expected to get busier</Text>
       </View>
