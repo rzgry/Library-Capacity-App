@@ -3,6 +3,9 @@ A mobile application for students to check the capacity levels of different libr
 
 [![Build Status](https://travis-ci.com/rzgry/Library-Capacity-App.svg?branch=master)](https://travis-ci.com/rzgry/Library-Capacity-App)
 
+[Main Screen](docs/main_screen.png "Main Page")
+[Library Screen](docs/library_screen.png "Library Page")
+
 ## Setting up VS Code Development Environment
 
 Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) vscode extensions
