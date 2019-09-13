@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "expo": "^30.0.1",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.6",
